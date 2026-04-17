@@ -1,0 +1,17 @@
+#!/bin/bash
+
+source "`dirname $0`/vhob-common.sh"
+
+if (( $# != 1 )); then
+    echo "Usage: $0 url" >&2
+    exit 1
+fi
+
+open_url() {
+    local url="$1"
+    echo "Openning URL: $url"
+    echo "$url" | socat STDIN TCP-CONNECT:localhost:$OPEN_PORT
+}
+
+URL="$1"
+open_url "$URL"

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+source "`dirname $0`/vhob-common.sh"
+
+connect_service() {
+    echo "Connecting to VM service" >&2
+    while true; do
+        socat TCP-CONNECT:localhost:$VM_PORT STDOUT
+        echo "No connection. Retrying..." >&2
+        sleep 5s
+    done
+}
+
+open_url() {
+    local url
+    while read url; do
+        echo "Open URL: $url" >&2
+        xdg-open "$url"
+    done
+}
+
+connect_service | open_url

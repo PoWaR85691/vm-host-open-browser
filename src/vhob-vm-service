@@ -1,0 +1,15 @@
+#!/bin/bash
+
+source "`dirname $0`/vhob-common.sh"
+
+listen_service() {
+    echo "Starting VM service" >&2
+    socat STDIN TCP-LISTEN:$VM_PORT,fork
+}
+
+listen_open() {
+    echo "Waiting URLs to open" >&2
+    socat TCP-LISTEN:$OPEN_PORT,fork STDOUT
+}
+
+listen_open | listen_service

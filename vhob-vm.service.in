@@ -1,0 +1,9 @@
+[Unit]
+Description=Open URLs in VMs on host 
+
+[Service]
+Type=simple
+ExecStart=@INSTALL_DIR@/vhob-vm-service
+
+[Install]
+WantedBy=default.target
