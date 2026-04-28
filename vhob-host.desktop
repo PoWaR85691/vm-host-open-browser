@@ -1,0 +1,7 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Exec=/usr/bin/systemctl start --user vhob-host.service
+Terminal=false
+Name=Open URLs in VMs on host
+Comment=Autostart host service to open URLs in VMs on host

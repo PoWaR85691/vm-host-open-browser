@@ -11,5 +11,7 @@ cp -u src/vhob-host-service $INSTALL_DIR
 mkdir -p $SYSTEMD_DIR
 cat vhob-host.service.in | configure INSTALL_DIR "$INSTALL_DIR" > $SYSTEMD_DIR/vhob-host.service
 
-systemctl enable --user vhob-host.service
+mkdir -p $AUTOSTART_DIR
+cp vhob-host.desktop $AUTOSTART_DIR
+
 systemctl start --user vhob-host.service
